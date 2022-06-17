@@ -1,13 +1,6 @@
-import {
-  Container,
-  Row,
-  Col,
-  Navbar,
-  Form,
-  Button,
-  Modal,
-} from "react-bootstrap";
+import { Container, Row, Col, Navbar, Form, Button } from "react-bootstrap";
 import Receipt from "./modal";
+import ParkingSpots from "./parkingSpots";
 import "./default.css";
 
 function App() {
@@ -36,6 +29,11 @@ function App() {
                 <Button type="submit">Submit</Button>
               </fieldset>
             </Form>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <ParkingSpots />
           </Col>
         </Row>
       </Container>
