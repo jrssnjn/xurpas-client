@@ -1,5 +1,5 @@
-import { Container, Row, Col, Navbar, Nav } from "react-bootstrap";
-import './default.css'
+import { Container, Row, Col, Navbar, Form, Button } from "react-bootstrap";
+import "./default.css";
 function App() {
   return (
     <div className="App">
@@ -10,7 +10,23 @@ function App() {
       </Navbar>
       <Container className="custom-container">
         <Row>
-          <Col>1 of 1</Col>
+          <Col>
+            <Form>
+              <fieldset>
+                <Form.Group className="mb-3">
+                  <Form.Control id="PlateNoInput" placeholder="Vehicle no." />
+                </Form.Group>
+                <Form.Group className="mb-3">
+                  <Form.Select id="disabledSelect">
+                    <option>Small Sized Vehicle</option>
+                    <option>Medium Sized Vehicle</option>
+                    <option>Large Sized Vehicle</option>
+                  </Form.Select>
+                </Form.Group>
+                <Button type="submit">Submit</Button>
+              </fieldset>
+            </Form>
+          </Col>
         </Row>
       </Container>
     </div>
