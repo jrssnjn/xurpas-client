@@ -1,44 +1,24 @@
-import { Container, Row, Col, Navbar, Form, Button } from "react-bootstrap";
-import Receipt from "./modal";
-import ParkingSpots from "./parkingSpots";
+import { Container, Navbar } from "react-bootstrap";
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import ParkVehicle from "./parkVehicle";
 import "./default.css";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar bg="dark" variant="dark">
-        <Container>
-          <Navbar.Brand href="#home">Xurpas</Navbar.Brand>
+    <Router>
+      <div className="App">
+        <Navbar bg="dark" variant="dark">
+          <Container>
+            <Navbar.Brand href="#home">Xurpas</Navbar.Brand>
+          </Container>
+        </Navbar>
+        <Container className="custom-container">
+          <Routes>
+            <Route exact path="/" element={<ParkVehicle />} />
+          </Routes>
         </Container>
-      </Navbar>
-      <Container className="custom-container">
-        <Row>
-          <Col>
-            <Form>
-              <fieldset>
-                <Form.Group className="mb-3">
-                  <Form.Control id="PlateNoInput" placeholder="Vehicle no." />
-                </Form.Group>
-                <Form.Group className="mb-3">
-                  <Form.Select id="disabledSelect">
-                    <option>Small Sized Vehicle</option>
-                    <option>Medium Sized Vehicle</option>
-                    <option>Large Sized Vehicle</option>
-                  </Form.Select>
-                </Form.Group>
-                <Button type="submit">Submit</Button>
-              </fieldset>
-            </Form>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <ParkingSpots />
-          </Col>
-        </Row>
-      </Container>
-      <Receipt />
-    </div>
+      </div>
+    </Router>
   );
 }
 
