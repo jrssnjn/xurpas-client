@@ -1,5 +1,6 @@
-import { Container, Navbar } from "react-bootstrap";
+import { Container, Navbar, Nav } from "react-bootstrap";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import ParkVehicle from "./parkVehicle";
 import "./default.css";
 
@@ -9,12 +10,21 @@ function App() {
       <div className="App">
         <Navbar bg="dark" variant="dark">
           <Container>
-            <Navbar.Brand href="#home">Xurpas</Navbar.Brand>
+            <LinkContainer to="/">
+              <Nav.Link>
+                <Navbar.Brand href="#home">Xurpas</Navbar.Brand>
+              </Nav.Link>
+            </LinkContainer>
+            <Nav className="me-auto">
+              <LinkContainer to="/park-vehicle">
+                <Nav.Link>Park Vehicle</Nav.Link>
+              </LinkContainer>
+            </Nav>
           </Container>
         </Navbar>
         <Container className="custom-container">
           <Routes>
-            <Route exact path="/" element={<ParkVehicle />} />
+            <Route exact path="/park-vehicle" element={<ParkVehicle />} />
           </Routes>
         </Container>
       </div>

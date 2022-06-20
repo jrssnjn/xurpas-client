@@ -1,7 +1,15 @@
+import { useState, useEffect } from "react";
 import { Table } from "react-bootstrap";
-import { useState } from "react";
+import axios from "axios";
+import Spot from "./spotItem";
 
-function parkingSpots() {
+function ParkingSpots() {
+  const [parkingSpots, setParkingSpots] = useState([]);
+
+  useEffect(() => {
+    console.log("Parking Spots :", parkingSpots);
+  }, []);
+
   return (
     <Table bordered hover className="mt-5">
       <thead>
@@ -11,21 +19,10 @@ function parkingSpots() {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>1</td>
-          <td>Small</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Medium</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Large</td>
-        </tr>
+        <Spot id="1" description="Small parking size" />
       </tbody>
     </Table>
   );
 }
 
-export default parkingSpots;
+export default ParkingSpots;
