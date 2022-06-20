@@ -1,15 +1,11 @@
-import { Table } from "react-bootstrap";
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 
-function ParkingSpot(props) {
-  useEffect(() => {
-    console.log(props);
-  }, []);
+function ParkingSpot({ id, description }) {
   return (
     <Fragment>
       <tr>
-        <td>1</td>
-        <td>Small</td>
+        <td>{id}</td>
+        <td>{description.slice(0, 4)}m</td>
       </tr>
     </Fragment>
   );

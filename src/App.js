@@ -12,7 +12,7 @@ function App() {
           <Container>
             <LinkContainer to="/">
               <Nav.Link>
-                <Navbar.Brand href="#home">Xurpas</Navbar.Brand>
+                <Navbar.Brand>Xurpas</Navbar.Brand>
               </Nav.Link>
             </LinkContainer>
             <Nav className="me-auto">
