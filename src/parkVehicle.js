@@ -37,9 +37,9 @@ function Component() {
                 }}
               >
                 <Form.Select id="entryPoint" name="entryPoint">
-                  <option value={1}>Entry Point # 1</option>
-                  <option value={2}>Entry Point # 2</option>
-                  <option value={3}>Entry Point # 3</option>
+                  <option value={1}>Entrance # 1</option>
+                  <option value={2}>Entrance # 2</option>
+                  <option value={3}>Entrance # 3</option>
                 </Form.Select>
               </Form.Group>
               <Button type="submit">Submit</Button>
