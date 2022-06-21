@@ -15,18 +15,20 @@ function Component() {
   const onClick = async (e) => {
     const { vehicleSize, entryPoint, vehiclePlateNo } = settings;
 
-    console.log(settings);
-
     if (vehiclePlateNo === "")
       return toast("Please assign a plate number for the vehicle.");
 
-    await axios.post("http://localhost:3000/park-vehicle", {
+    let res = await axios.post("http://localhost:3000/park-vehicle", {
       size: Number(vehicleSize),
       entryPoint,
       vehiclePlateNumber: vehiclePlateNo,
     });
 
-    toast("Vehicle has been assigned a parking spot.");
+    console.log(res.data);
+
+    toast(
+      `Vehicle has been assigned to parking spot # ${res.data.parkingSpotNumber}, with receipt number ${res.data.receiptNumber}`
+    );
   };
 
   return (
