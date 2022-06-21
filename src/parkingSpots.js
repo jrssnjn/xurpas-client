@@ -24,6 +24,7 @@ function ParkingSpots({ vehicleSize, entryPoint }) {
         <tr>
           <th>Parking Spot #</th>
           <th>Distance</th>
+          <th>Parking Spot Size</th>
         </tr>
       </thead>
       <tbody>
@@ -33,7 +34,8 @@ function ParkingSpots({ vehicleSize, entryPoint }) {
               <Spot
                 key={elem.parkingSpotNumber}
                 id={elem.parkingSpotNumber}
-                description={elem.distance}
+                distance={elem.distance}
+                description={elem.description}
               />
             );
           })}

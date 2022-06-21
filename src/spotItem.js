@@ -1,11 +1,12 @@
 import { Fragment } from "react";
 
-function ParkingSpot({ id, description }) {
+function ParkingSpot({ id, distance, description }) {
   return (
     <Fragment>
       <tr>
         <td>{id}</td>
-        <td>{description.slice(0, 4)}m</td>
+        <td>{distance.slice(0, 4)}m</td>
+        <td>{description}</td>
       </tr>
     </Fragment>
   );
