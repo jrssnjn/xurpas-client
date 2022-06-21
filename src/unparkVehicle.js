@@ -3,13 +3,30 @@ import { Fragment, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import "./default.css";
+import Modal from "./modal";
 
 function Component() {
   const [settings, setSettings] = useState({
     receiptNo: "",
   });
 
-  const onClick = async (e) => {};
+  const [visible, setVisible] = useState(false);
+
+  const [response, setResponse] = useState({});
+
+  const onClick = async (e) => {
+    if (!settings.receiptNo)
+      return toast("Receipt Number required for this action.");
+
+    let res = await axios.post("http://localhost:3000/unpark-vehicle", {
+      receiptNumber: settings.receiptNo,
+      parkedAt: new Date(),
+    });
+
+    setResponse(res.data);
+
+    setVisible(true);
+  };
 
   return (
     <Fragment>
@@ -25,7 +42,7 @@ function Component() {
                   onChange={(e) => {
                     setSettings({
                       ...settings,
-                      vehiclePlateNo: e.target.value,
+                      receiptNo: e.target.value,
                     });
                   }}
                 />
@@ -37,6 +54,13 @@ function Component() {
           </Form>
         </Col>
       </Row>
+      <Modal
+        visible={visible}
+        onHide={() => {
+          setVisible(false);
+        }}
+        data={response}
+      />
     </Fragment>
   );
 }
