@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import { LinkContainer } from "react-router-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import ParkVehicle from "./parkVehicle";
+import UnparkVehicle from "./unparkVehicle";
 import "./default.css";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -21,12 +22,16 @@ function App() {
               <LinkContainer to="/park-vehicle">
                 <Nav.Link>Park Vehicle</Nav.Link>
               </LinkContainer>
+              <LinkContainer to="/unpark-vehicle">
+                <Nav.Link>Unpark Vehicle</Nav.Link>
+              </LinkContainer>
             </Nav>
           </Container>
         </Navbar>
         <Container className="custom-container">
           <Routes>
             <Route exact path="/park-vehicle" element={<ParkVehicle />} />
+            <Route exact path="/unpark-vehicle" element={<UnparkVehicle />} />
           </Routes>
         </Container>
         <ToastContainer />
