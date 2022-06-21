@@ -1,10 +1,34 @@
 import { Row, Col, Form, Button } from "react-bootstrap";
 import { Fragment, useState } from "react";
+import { toast } from "react-toastify";
+import axios from "axios";
 import ParkingSpots from "./parkingSpots";
 import "./default.css";
 
 function Component() {
-  const [settings, setSettings] = useState({ vehicleSize: 1, entryPoint: 1 });
+  const [settings, setSettings] = useState({
+    vehicleSize: 1,
+    entryPoint: 1,
+    vehiclePlateNo: "",
+  });
+
+  const onClick = async (e) => {
+    const { vehicleSize, entryPoint, vehiclePlateNo } = settings;
+
+    console.log(settings);
+
+    if (vehiclePlateNo === "")
+      return toast("Please assign a plate number for the vehicle.");
+
+    await axios.post("http://localhost:3000/park-vehicle", {
+      size: Number(vehicleSize),
+      entryPoint,
+      vehiclePlateNumber: vehiclePlateNo,
+    });
+
+    toast("Vehicle has been assigned a parking spot.");
+  };
+
   return (
     <Fragment>
       <Row>
@@ -15,6 +39,13 @@ function Component() {
                 <Form.Control
                   id="PlateNoInput"
                   placeholder="Vehicle plate no."
+                  name="vehiclePlateNo"
+                  onChange={(e) => {
+                    setSettings({
+                      ...settings,
+                      vehiclePlateNo: e.target.value,
+                    });
+                  }}
                 />
               </Form.Group>
               <Form.Group className="mb-3">
@@ -42,7 +73,9 @@ function Component() {
                   <option value={3}>Entrance # 3</option>
                 </Form.Select>
               </Form.Group>
-              <Button type="submit">Submit</Button>
+              <Button type="button" onClick={onClick}>
+                Submit
+              </Button>
             </fieldset>
           </Form>
         </Col>
